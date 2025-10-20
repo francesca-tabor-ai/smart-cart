@@ -509,62 +509,285 @@ function App() {
       {/* How It Works */}
       <section id="how-it-works" className="py-12 sm:py-16 md:py-20 bg-[#FAF8F5]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-12 sm:mb-16 animate-fade-in">How It Works</h2>
-          <div className="grid md:grid-cols-2 gap-8 md:gap-12">
-            <div className="space-y-6 sm:space-y-8">
-              <div className="flex gap-3 sm:gap-4">
-                <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-[#402A2F] text-white rounded-full flex items-center justify-center font-bold text-sm sm:text-base">1</div>
+          {/* Header */}
+          <div className="text-center mb-12 sm:mb-16 animate-fade-in">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">From Prompt to Purchase — in Seconds</h2>
+            <p className="text-base sm:text-lg md:text-xl text-[#402A2F]/80 max-w-4xl mx-auto leading-relaxed">
+              SmartCart transforms everyday meal planning into instant shopping. It connects grocery marketplaces to large language models (like ChatGPT or Claude) through a secure Model Context Protocol (MCP) layer — allowing AI assistants to search, curate, and build baskets on behalf of users.
+            </p>
+          </div>
+
+          {/* Steps */}
+          <div className="space-y-8 sm:space-y-12 mb-12 sm:mb-16">
+            {/* Step 1 */}
+            <div className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 shadow-lg">
+              <div className="flex items-start gap-4 mb-4">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-[#402A2F] text-white rounded-full flex items-center justify-center font-bold text-lg sm:text-xl flex-shrink-0">1</div>
                 <div>
-                  <h3 className="font-semibold text-lg sm:text-xl mb-2">User Makes Request</h3>
-                  <p className="text-sm sm:text-base text-[#402A2F]/70">A user asks ChatGPT: "Plan a £100 weekly basket for high-protein vegetarian dinners."</p>
+                  <h3 className="text-xl sm:text-2xl font-bold mb-3">The User Makes a Request</h3>
+                  <p className="text-base sm:text-lg text-[#402A2F]/80 mb-4">It starts with a natural question:</p>
                 </div>
               </div>
-              <div className="flex gap-3 sm:gap-4">
-                <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-[#402A2F] text-white rounded-full flex items-center justify-center font-bold text-sm sm:text-base">2</div>
-                <div>
-                  <h3 className="font-semibold text-lg sm:text-xl mb-2">AI Queries SmartCart</h3>
-                  <p className="text-sm sm:text-base text-[#402A2F]/70">The LLM queries SmartCart to find real products, availability, and pricing.</p>
-                </div>
+              <div className="bg-[#FAF8F5] rounded-xl p-4 sm:p-6 mb-4 space-y-2">
+                <p className="text-sm sm:text-base text-[#402A2F] italic">"Plan a week of family dinners under £80."</p>
+                <p className="text-sm sm:text-base text-[#402A2F] italic">"Add my regular breakfast items to the basket."</p>
+                <p className="text-sm sm:text-base text-[#402A2F] italic">"Find vegan protein options available this week."</p>
               </div>
-              <div className="flex gap-3 sm:gap-4">
-                <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-[#402A2F] text-white rounded-full flex items-center justify-center font-bold text-sm sm:text-base">3</div>
-                <div>
-                  <h3 className="font-semibold text-lg sm:text-xl mb-2">Basket Generated</h3>
-                  <p className="text-sm sm:text-base text-[#402A2F]/70">It generates a full basket and returns a live checkout link.</p>
-                </div>
-              </div>
-              <div className="flex gap-3 sm:gap-4">
-                <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-[#402A2F] text-white rounded-full flex items-center justify-center font-bold text-sm sm:text-base">4</div>
-                <div>
-                  <h3 className="font-semibold text-lg sm:text-xl mb-2">Quick Checkout</h3>
-                  <p className="text-sm sm:text-base text-[#402A2F]/70">The shopper confirms delivery — done in under two minutes.</p>
-                </div>
-              </div>
-            </div>
-            <div className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-lg">
-              <h3 className="font-semibold text-lg sm:text-xl mb-4 sm:mb-6">Behind the Scenes</h3>
-              <p className="text-sm sm:text-base text-[#402A2F]/80 mb-4 sm:mb-6">
-                SmartCart handles the data translation, tokenized authentication, and checkout hand-off, all through MCP-compliant endpoints.
+              <p className="text-base sm:text-lg text-[#402A2F]/80">
+                The AI interprets the request — but instead of guessing what's in stock, it connects directly to your live catalog via SmartCart.
               </p>
-              <div className="space-y-3 sm:space-y-4">
-                <div className="flex items-center gap-2 sm:gap-3 p-3 sm:p-4 bg-[#FAF8F5] rounded-lg sm:rounded-xl">
-                  <Database className="w-4 h-4 sm:w-5 sm:h-5 text-[#402A2F]" />
-                  <span className="text-xs sm:text-sm font-medium">Data Translation Layer</span>
-                </div>
-                <div className="flex items-center gap-3 p-4 bg-[#FAF8F5] rounded-xl">
-                  <Shield className="w-5 h-5 text-[#402A2F]" />
-                  <span className="text-sm font-medium">Tokenized Authentication</span>
-                </div>
-                <div className="flex items-center gap-3 p-4 bg-[#FAF8F5] rounded-xl">
-                  <Zap className="w-5 h-5 text-[#402A2F]" />
-                  <span className="text-sm font-medium">MCP-Compliant Endpoints</span>
-                </div>
-                <div className="flex items-center gap-3 p-4 bg-[#FAF8F5] rounded-xl">
-                  <ShoppingCart className="w-5 h-5 text-[#402A2F]" />
-                  <span className="text-sm font-medium">Checkout Hand-off</span>
+            </div>
+
+            {/* Step 2 */}
+            <div className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 shadow-lg">
+              <div className="flex items-start gap-4 mb-4">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-[#402A2F] text-white rounded-full flex items-center justify-center font-bold text-lg sm:text-xl flex-shrink-0">2</div>
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-bold mb-3">SmartCart Connects to the Marketplace</h3>
+                  <p className="text-base sm:text-lg text-[#402A2F]/80 mb-4">
+                    SmartCart acts as the secure bridge between large language models and grocery platforms. Through the Model Context Protocol, it provides the AI with structured, context-rich access to:
+                  </p>
                 </div>
               </div>
+              <div className="grid sm:grid-cols-3 gap-4 mb-4">
+                <div className="bg-[#FAF8F5] rounded-xl p-4">
+                  <div className="w-10 h-10 bg-[#D8D0C1] rounded-full flex items-center justify-center mb-3">
+                    <Database className="w-5 h-5 text-[#402A2F]" />
+                  </div>
+                  <h4 className="font-semibold text-sm sm:text-base mb-2">Product Data</h4>
+                  <p className="text-xs sm:text-sm text-[#402A2F]/70">Titles, pricing, nutritional info, and availability.</p>
+                </div>
+                <div className="bg-[#FAF8F5] rounded-xl p-4">
+                  <div className="w-10 h-10 bg-[#D8D0C1] rounded-full flex items-center justify-center mb-3">
+                    <TrendingUp className="w-5 h-5 text-[#402A2F]" />
+                  </div>
+                  <h4 className="font-semibold text-sm sm:text-base mb-2">Promotions</h4>
+                  <p className="text-xs sm:text-sm text-[#402A2F]/70">Live discounts, bundles, and substitutions.</p>
+                </div>
+                <div className="bg-[#FAF8F5] rounded-xl p-4">
+                  <div className="w-10 h-10 bg-[#D8D0C1] rounded-full flex items-center justify-center mb-3">
+                    <ShoppingCart className="w-5 h-5 text-[#402A2F]" />
+                  </div>
+                  <h4 className="font-semibold text-sm sm:text-base mb-2">Basket Actions</h4>
+                  <p className="text-xs sm:text-sm text-[#402A2F]/70">Add, remove, modify, or share items in real time.</p>
+                </div>
+              </div>
+              <p className="text-base sm:text-lg text-[#402A2F]/80">
+                The AI retrieves exactly what's available — <span className="font-semibold">no hallucinations, no expired products.</span>
+              </p>
             </div>
+
+            {/* Step 3 */}
+            <div className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 shadow-lg">
+              <div className="flex items-start gap-4 mb-4">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-[#402A2F] text-white rounded-full flex items-center justify-center font-bold text-lg sm:text-xl flex-shrink-0">3</div>
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-bold mb-3">The Basket is Built in Real Time</h3>
+                  <p className="text-base sm:text-lg text-[#402A2F]/80 mb-4">
+                    The assistant compiles a curated, shoppable basket that matches the request — optimizing for dietary goals, price, and freshness.
+                  </p>
+                </div>
+              </div>
+              <div className="bg-gradient-to-br from-[#E7E6E3] to-[#D8D0C1] rounded-xl p-6 mb-4">
+                <p className="text-base sm:text-lg font-semibold text-[#402A2F] mb-2">"Here's your £78.60 weekly vegetarian basket. Add to Ocado?"</p>
+                <p className="text-sm sm:text-base text-[#402A2F]/70">With one click, the basket is created directly on the retailer's site via secure authentication.</p>
+              </div>
+            </div>
+
+            {/* Step 4 */}
+            <div className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 shadow-lg">
+              <div className="flex items-start gap-4 mb-4">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-[#402A2F] text-white rounded-full flex items-center justify-center font-bold text-lg sm:text-xl flex-shrink-0">4</div>
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-bold mb-3">Checkout and Delivery</h3>
+                  <p className="text-base sm:text-lg text-[#402A2F]/80 mb-4">
+                    When the user confirms, SmartCart initiates checkout through OAuth-protected endpoints. Users can choose delivery slots, apply loyalty discounts, or modify quantities — all within the retailer's native flow.
+                  </p>
+                </div>
+              </div>
+              <div className="bg-[#FAF8F5] rounded-xl p-4 sm:p-6">
+                <p className="text-base sm:text-lg font-semibold text-[#402A2F] text-center">No new accounts, no redirects, no friction.</p>
+              </div>
+            </div>
+
+            {/* Step 5 */}
+            <div className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 shadow-lg">
+              <div className="flex items-start gap-4 mb-4">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-[#402A2F] text-white rounded-full flex items-center justify-center font-bold text-lg sm:text-xl flex-shrink-0">5</div>
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-bold mb-3">Insights and Optimization</h3>
+                  <p className="text-base sm:text-lg text-[#402A2F]/80 mb-4">
+                    For retailers and partners, SmartCart provides analytics on:
+                  </p>
+                </div>
+              </div>
+              <div className="grid sm:grid-cols-3 gap-4">
+                <div className="flex items-start gap-3 p-4 bg-[#FAF8F5] rounded-xl">
+                  <LineChart className="w-5 h-5 text-[#402A2F] mt-1 flex-shrink-0" />
+                  <div>
+                    <p className="text-sm sm:text-base font-semibold mb-1">Basket Conversions</p>
+                    <p className="text-xs sm:text-sm text-[#402A2F]/70">From AI sources</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 p-4 bg-[#FAF8F5] rounded-xl">
+                  <TrendingUp className="w-5 h-5 text-[#402A2F] mt-1 flex-shrink-0" />
+                  <div>
+                    <p className="text-sm sm:text-base font-semibold mb-1">Performance</p>
+                    <p className="text-xs sm:text-sm text-[#402A2F]/70">Product and promotion tracking</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 p-4 bg-[#FAF8F5] rounded-xl">
+                  <Target className="w-5 h-5 text-[#402A2F] mt-1 flex-shrink-0" />
+                  <div>
+                    <p className="text-sm sm:text-base font-semibold mb-1">User Intent</p>
+                    <p className="text-xs sm:text-sm text-[#402A2F]/70">What customers ask for via AI</p>
+                  </div>
+                </div>
+              </div>
+              <p className="text-base sm:text-lg text-[#402A2F]/80 mt-4">
+                This data feeds back into your retail media network, optimizing future product placements and offers.
+              </p>
+            </div>
+          </div>
+
+          {/* Security Section */}
+          <div className="bg-gradient-to-br from-[#402A2F] to-[#402A2F]/80 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 text-white mb-12 sm:mb-16">
+            <h3 className="text-2xl sm:text-3xl font-bold mb-6 text-center">Secure. Compliant. Scalable.</h3>
+            <p className="text-base sm:text-lg text-center mb-8 text-white/90">
+              SmartCart is designed for enterprise-grade governance and scalability.
+            </p>
+            <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
+              <div className="text-center">
+                <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Lock className="w-6 h-6" />
+                </div>
+                <h4 className="font-semibold mb-2">Secure Tokens</h4>
+                <p className="text-sm text-white/80">Short-lived, encrypted tokens for all operations</p>
+              </div>
+              <div className="text-center">
+                <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Shield className="w-6 h-6" />
+                </div>
+                <h4 className="font-semibold mb-2">GDPR Compliant</h4>
+                <p className="text-sm text-white/80">User data never leaves retailer's environment</p>
+              </div>
+              <div className="text-center">
+                <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Database className="w-6 h-6" />
+                </div>
+                <h4 className="font-semibold mb-2">API-First Design</h4>
+                <p className="text-sm text-white/80">Compatible with existing catalog and checkout APIs</p>
+              </div>
+              <div className="text-center">
+                <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Zap className="w-6 h-6" />
+                </div>
+                <h4 className="font-semibold mb-2">Scalable Infrastructure</h4>
+                <p className="text-sm text-white/80">Millions of AI-driven queries per day</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Benefits Table */}
+          <div className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 shadow-lg mb-12 sm:mb-16">
+            <h3 className="text-2xl sm:text-3xl font-bold mb-8 text-center">Why It Works for Everyone</h3>
+            <div className="grid md:grid-cols-3 gap-6">
+              <div>
+                <div className="w-12 h-12 bg-[#D8D0C1] rounded-full flex items-center justify-center mb-4">
+                  <Users className="w-6 h-6 text-[#402A2F]" />
+                </div>
+                <h4 className="font-semibold text-lg mb-4">For Consumers</h4>
+                <ul className="space-y-2 text-sm text-[#402A2F]/80">
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#402A2F] mt-1">✓</span>
+                    <span>Faster, simpler grocery shopping</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#402A2F] mt-1">✓</span>
+                    <span>Personalized recommendations</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#402A2F] mt-1">✓</span>
+                    <span>Seamless cross-device experience</span>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <div className="w-12 h-12 bg-[#D8D0C1] rounded-full flex items-center justify-center mb-4">
+                  <ShoppingCart className="w-6 h-6 text-[#402A2F]" />
+                </div>
+                <h4 className="font-semibold text-lg mb-4">For Retailers</h4>
+                <ul className="space-y-2 text-sm text-[#402A2F]/80">
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#402A2F] mt-1">✓</span>
+                    <span>Higher conversions and larger baskets</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#402A2F] mt-1">✓</span>
+                    <span>Differentiation beyond delivery speed</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#402A2F] mt-1">✓</span>
+                    <span>Better data on shopping intent</span>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <div className="w-12 h-12 bg-[#D8D0C1] rounded-full flex items-center justify-center mb-4">
+                  <Target className="w-6 h-6 text-[#402A2F]" />
+                </div>
+                <h4 className="font-semibold text-lg mb-4">For Partners</h4>
+                <ul className="space-y-2 text-sm text-[#402A2F]/80">
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#402A2F] mt-1">✓</span>
+                    <span>New monetization and API integration opportunities</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#402A2F] mt-1">✓</span>
+                    <span>Access to AI-native audiences</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-[#402A2F] mt-1">✓</span>
+                    <span>Scalable integration via MCP</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* Example Flow */}
+          <div className="bg-gradient-to-br from-[#E7E6E3] to-[#D8D0C1] rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 mb-12 sm:mb-16">
+            <h3 className="text-2xl sm:text-3xl font-bold mb-6 text-center">Example Flow</h3>
+            <div className="space-y-4">
+              <div className="flex items-start gap-4">
+                <div className="w-8 h-8 bg-[#402A2F] text-white rounded-full flex items-center justify-center flex-shrink-0 mt-1 text-sm font-bold">1</div>
+                <p className="text-base sm:text-lg text-[#402A2F]"><span className="font-semibold">You say:</span> "Plan five quick dinners for two under £60."</p>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="w-8 h-8 bg-[#402A2F] text-white rounded-full flex items-center justify-center flex-shrink-0 mt-1 text-sm font-bold">2</div>
+                <p className="text-base sm:text-lg text-[#402A2F]"><span className="font-semibold">AI builds:</span> Pasta with lentils, tofu stir-fry, chickpea curry, stuffed peppers, vegetable soup.</p>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="w-8 h-8 bg-[#402A2F] text-white rounded-full flex items-center justify-center flex-shrink-0 mt-1 text-sm font-bold">3</div>
+                <p className="text-base sm:text-lg text-[#402A2F]"><span className="font-semibold">SmartCart:</span> Finds ingredients, substitutes, and promotions → generates a ready-to-checkout Ocado basket.</p>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="w-8 h-8 bg-[#402A2F] text-white rounded-full flex items-center justify-center flex-shrink-0 mt-1 text-sm font-bold">4</div>
+                <p className="text-base sm:text-lg text-[#402A2F]"><span className="font-semibold">You click:</span> "Add to Cart" — done.</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Final CTA */}
+          <div className="text-center">
+            <h3 className="text-2xl sm:text-3xl font-bold mb-4">SmartCart in Action</h3>
+            <p className="text-base sm:text-lg text-[#402A2F]/80 mb-6 max-w-3xl mx-auto">
+              Your platform becomes part of the daily rhythm — powering recipe recommendations, voice shopping, and nutritional planning across every AI interface.
+            </p>
+            <p className="text-lg sm:text-xl font-semibold mb-6">From ChatGPT to checkout — all powered by SmartCart.</p>
+            <button className="px-8 py-4 bg-[#402A2F] text-white rounded-full font-semibold text-lg hover:bg-[#402A2F]/90 transition-all shadow-lg">
+              Request a Demo
+            </button>
           </div>
         </div>
       </section>
