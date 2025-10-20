@@ -48,7 +48,7 @@ function App() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-32 md:pb-40">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-20">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0">
           <div
@@ -139,32 +139,67 @@ function App() {
           </div>
         </div>
 
-        {/* Recipe Carousel */}
-        <div className="absolute bottom-4 sm:bottom-8 left-0 right-0 z-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            <div className="flex gap-3 sm:gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory">
+      </section>
+
+      {/* Recipe Showcase Section */}
+      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-white to-[#FAF8F5]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 text-[#402A2F]">Explore Popular Recipe Collections</h2>
+            <p className="text-base sm:text-lg text-[#402A2F]/70">Curated meal plans tailored to your lifestyle and budget</p>
+          </div>
+
+          <div className="relative">
+            {/* Desktop Grid View */}
+            <div className="hidden md:grid md:grid-cols-3 lg:grid-cols-5 gap-6">
               {recipes.map((recipe, idx) => (
                 <div
                   key={idx}
                   onClick={() => setActiveRecipe(idx)}
-                  className={`flex-shrink-0 w-60 sm:w-72 bg-white rounded-xl sm:rounded-2xl shadow-xl overflow-hidden cursor-pointer transform transition-all duration-300 snap-start ${
-                    activeRecipe === idx ? 'scale-105 ring-2 ring-[#402A2F]' : 'hover:scale-102'
+                  className={`bg-white rounded-2xl shadow-lg overflow-hidden cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-xl ${
+                    activeRecipe === idx ? 'ring-2 ring-[#402A2F]' : ''
                   }`}
                 >
-                  <div className="h-40 sm:h-48 bg-cover bg-center" style={{ backgroundImage: `url(${recipe.image})` }} />
-                  <div className="p-3 sm:p-4">
-                    <h3 className="font-semibold text-base sm:text-lg mb-2 text-[#402A2F]">{recipe.name}</h3>
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs sm:text-sm text-[#402A2F]/70">{recipe.price}</span>
-                      <button className="px-3 sm:px-4 py-1.5 sm:py-2 bg-[#E7E6E3] hover:bg-[#D8D0C1] rounded-full text-xs font-medium transition-colors flex items-center gap-1">
-                        <ShoppingCart className="w-3 h-3" />
-                        <span className="hidden sm:inline">Add to Basket</span>
-                        <span className="sm:hidden">Add</span>
-                      </button>
+                  <div className="h-48 bg-cover bg-center" style={{ backgroundImage: `url(${recipe.image})` }} />
+                  <div className="p-4">
+                    <h3 className="font-semibold text-lg mb-3 text-[#402A2F]">{recipe.name}</h3>
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-sm text-[#402A2F]/70">{recipe.price} total</span>
                     </div>
+                    <button className="w-full py-2.5 bg-[#402A2F] hover:bg-[#402A2F]/90 text-white rounded-full text-sm font-medium transition-colors flex items-center justify-center gap-2">
+                      <ShoppingCart className="w-4 h-4" />
+                      Add to Basket
+                    </button>
                   </div>
                 </div>
               ))}
+            </div>
+
+            {/* Mobile/Tablet Carousel */}
+            <div className="md:hidden">
+              <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory">
+                {recipes.map((recipe, idx) => (
+                  <div
+                    key={idx}
+                    onClick={() => setActiveRecipe(idx)}
+                    className={`flex-shrink-0 w-64 sm:w-80 bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer transform transition-all duration-300 snap-start ${
+                      activeRecipe === idx ? 'scale-105 ring-2 ring-[#402A2F]' : ''
+                    }`}
+                  >
+                    <div className="h-48 sm:h-56 bg-cover bg-center" style={{ backgroundImage: `url(${recipe.image})` }} />
+                    <div className="p-4">
+                      <h3 className="font-semibold text-lg mb-3 text-[#402A2F]">{recipe.name}</h3>
+                      <div className="flex items-center justify-between mb-3">
+                        <span className="text-sm text-[#402A2F]/70">{recipe.price} total</span>
+                      </div>
+                      <button className="w-full py-2.5 bg-[#402A2F] hover:bg-[#402A2F]/90 text-white rounded-full text-sm font-medium transition-colors flex items-center justify-center gap-2">
+                        <ShoppingCart className="w-4 h-4" />
+                        Add to Basket
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
