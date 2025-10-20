@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { ShoppingCart, Sparkles, ChefHat, ArrowRight, MessageSquare, Zap, Shield, TrendingUp, Users, Clock, Target, Database, Lock, LineChart, Download } from 'lucide-react';
 
 function App() {
-  const [isTyping, setIsTyping] = useState(true);
   const [showButton, setShowButton] = useState(false);
   const [activeRecipe, setActiveRecipe] = useState(0);
 
@@ -27,10 +26,8 @@ function App() {
   ];
 
   useEffect(() => {
-    const typingTimer = setTimeout(() => setIsTyping(false), 2000);
     const buttonTimer = setTimeout(() => setShowButton(true), 2500);
     return () => {
-      clearTimeout(typingTimer);
       clearTimeout(buttonTimer);
     };
   }, []);
@@ -74,28 +71,6 @@ function App() {
 
         {/* Content */}
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 text-center">
-          {/* AI Assistant Bubble */}
-          <div className="hidden lg:block absolute top-0 right-8 bg-white rounded-2xl shadow-xl p-4 max-w-xs animate-fade-in">
-            <div className="flex items-start gap-3">
-              <div className="w-8 h-8 bg-[#D8D0C1] rounded-full flex items-center justify-center flex-shrink-0">
-                <Sparkles className="w-4 h-4 text-[#402A2F]" />
-              </div>
-              <div className="text-left text-sm">
-                {isTyping ? (
-                  <div className="flex gap-1">
-                    <span className="w-2 h-2 bg-[#402A2F] rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                    <span className="w-2 h-2 bg-[#402A2F] rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                    <span className="w-2 h-2 bg-[#402A2F] rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
-                  </div>
-                ) : (
-                  <p className="text-[#402A2F]">
-                    Sure! Here's a 3-day meal plan — everything's in stock at Ocado.
-                  </p>
-                )}
-              </div>
-            </div>
-          </div>
-
           {/* Main Headline */}
           <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight animate-fade-in">
             Discover, Cook, and Shop —<br className="hidden sm:block" />
