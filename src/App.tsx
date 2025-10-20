@@ -6,6 +6,18 @@ function App() {
   const [showButton, setShowButton] = useState(false);
   const [activeRecipe, setActiveRecipe] = useState(0);
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, target: string) => {
+    e.preventDefault();
+    const element = document.querySelector(target);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const recipes = [
     { name: 'Quick Dinners', price: '£42.50', image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop' },
     { name: 'Family Favourites', price: '£65.30', image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=300&fit=crop' },
@@ -28,18 +40,17 @@ function App() {
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-[#E7E6E3]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
-          <div className="flex items-center gap-2">
+          <a href="#" onClick={(e) => { e.preventDefault(); scrollToTop(); }} className="flex items-center gap-2 cursor-pointer">
             <ChefHat className="w-5 h-5 sm:w-6 sm:h-6 text-[#402A2F]" />
             <span className="text-lg sm:text-xl font-semibold">SmartCart</span>
-          </div>
+          </a>
           <div className="hidden md:flex items-center gap-4 lg:gap-6">
-            <a href="#solution" className="text-sm hover:text-[#402A2F]/70 transition-colors">Solution</a>
-            <a href="#how-it-works" className="text-sm hover:text-[#402A2F]/70 transition-colors">How it Works</a>
-            <a href="#impact" className="text-sm hover:text-[#402A2F]/70 transition-colors">Impact</a>
-            <a href="#who-its-for" className="text-sm hover:text-[#402A2F]/70 transition-colors">Who It's For</a>
-            <button className="px-4 lg:px-5 py-2 bg-[#D8D0C1] hover:bg-[#CEC7BF] rounded-full text-sm font-medium transition-colors">
-              Request Pilot
-            </button>
+            <a href="#" onClick={(e) => { e.preventDefault(); scrollToTop(); }} className="text-sm hover:text-[#402A2F]/70 transition-colors">Home</a>
+            <a href="#solution" onClick={(e) => handleNavClick(e, '#solution')} className="text-sm hover:text-[#402A2F]/70 transition-colors">Solution</a>
+            <a href="#how-it-works" onClick={(e) => handleNavClick(e, '#how-it-works')} className="text-sm hover:text-[#402A2F]/70 transition-colors">How it Works</a>
+            <a href="#impact" onClick={(e) => handleNavClick(e, '#impact')} className="text-sm hover:text-[#402A2F]/70 transition-colors">Impact</a>
+            <a href="#who-its-for" onClick={(e) => handleNavClick(e, '#who-its-for')} className="text-sm hover:text-[#402A2F]/70 transition-colors">Who It's For</a>
+            <button className="px-4 lg:px-5 py-2 bg-[#D8D0C1] hover:bg-[#CEC7BF] rounded-full text-sm font-medium transition-colors">Request Pilot</button>
           </div>
           <button className="md:hidden px-4 py-2 bg-[#D8D0C1] hover:bg-[#CEC7BF] rounded-full text-xs font-medium transition-colors">
             Menu
@@ -48,7 +59,7 @@ function App() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-20">
+      <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-20">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0">
           <div
@@ -86,19 +97,19 @@ function App() {
           </div>
 
           {/* Main Headline */}
-          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight animate-fade-in">
             Discover, Cook, and Shop —<br className="hidden sm:block" />
             All in One Conversation
           </h1>
 
           {/* Subheadline */}
-          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed animate-fade-in" style={{ animationDelay: '0.2s', opacity: 0, animationFillMode: 'forwards' }}>
             Ask for a recipe. Get real ingredients. Check out in minutes.<br />
             <span className="text-sm sm:text-base md:text-lg">SmartCart connects your favorite AI assistant to grocery platforms like Ocado, turning recipes into ready-to-buy baskets.</span>
           </p>
 
           {/* AI Recipe Card Overlay */}
-          <div className="bg-white rounded-2xl sm:rounded-3xl shadow-2xl p-4 sm:p-6 md:p-8 max-w-2xl mx-auto mb-8 sm:mb-12 transform hover:scale-105 transition-transform duration-300">
+          <div className="bg-white rounded-2xl sm:rounded-3xl shadow-2xl p-4 sm:p-6 md:p-8 max-w-2xl mx-auto mb-8 sm:mb-12 transform hover:scale-105 transition-transform duration-300 animate-fade-in" style={{ animationDelay: '0.4s', opacity: 0, animationFillMode: 'forwards' }}>
             <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
               <div className="w-8 h-8 sm:w-10 sm:h-10 bg-[#E7E6E3] rounded-full flex items-center justify-center flex-shrink-0">
                 <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-[#402A2F]" />
@@ -129,7 +140,7 @@ function App() {
           </div>
 
           {/* CTAs */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 animate-fade-in" style={{ animationDelay: '0.6s', opacity: 0, animationFillMode: 'forwards' }}>
             <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white text-[#402A2F] rounded-full font-semibold text-base sm:text-lg hover:bg-white/90 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
               Try a Recipe
             </button>
@@ -144,7 +155,7 @@ function App() {
       {/* Recipe Showcase Section */}
       <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-white to-[#FAF8F5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-8 sm:mb-12">
+          <div className="text-center mb-8 sm:mb-12 animate-fade-in">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 text-[#402A2F]">Explore Popular Recipe Collections</h2>
             <p className="text-base sm:text-lg text-[#402A2F]/70">Curated meal plans tailored to your lifestyle and budget</p>
           </div>
@@ -208,7 +219,7 @@ function App() {
       {/* Tagline Section */}
       <section className="py-12 sm:py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">Make Grocery Shopping Conversational</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 animate-fade-in">Make Grocery Shopping Conversational</h2>
           <p className="text-base sm:text-lg md:text-xl text-[#402A2F]/80 leading-relaxed">
             Turn ChatGPT, Claude, or any AI assistant into a personal grocery concierge.<br className="hidden sm:block" />
             SmartCart connects your grocery marketplace to the Model Context Protocol (MCP) — making every product, promotion, and basket instantly shoppable through natural language.
@@ -220,7 +231,7 @@ function App() {
       <section className="py-12 sm:py-16 md:py-20 bg-[#FAF8F5]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-            <div>
+            <div className="animate-slide-in-left" style={{ opacity: 0, animationFillMode: 'forwards' }}>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">The Problem</h2>
               <p className="text-base sm:text-lg text-[#402A2F]/80 mb-4 sm:mb-6 leading-relaxed">
                 Grocery marketplaces are rich in data but locked behind closed systems.
@@ -230,7 +241,7 @@ function App() {
                 Affluent, time-pressed shoppers want speed, personalization, and frictionless checkout — not another scrolling session.
               </p>
             </div>
-            <div className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-lg">
+            <div className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-lg animate-slide-in-right" style={{ opacity: 0, animationFillMode: 'forwards' }}>
               <div className="space-y-4 sm:space-y-6">
                 <div className="flex items-start gap-3 sm:gap-4">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0">
@@ -268,14 +279,14 @@ function App() {
       {/* The Solution */}
       <section id="solution" className="py-12 sm:py-16 md:py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-12 sm:mb-16">
+          <div className="text-center mb-12 sm:mb-16 animate-fade-in">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">The Solution</h2>
             <p className="text-base sm:text-lg md:text-xl text-[#402A2F]/80 max-w-4xl mx-auto leading-relaxed">
               SmartCart MCP Server exposes your structured catalog, pricing, and inventory data through a secure, compliant MCP layer.
               It lets large language models search, curate, and purchase groceries on behalf of users, all within a trusted, governed ecosystem.
             </p>
           </div>
-          <div className="bg-gradient-to-br from-[#E7E6E3] to-[#D8D0C1] rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 text-center">
+          <div className="bg-gradient-to-br from-[#E7E6E3] to-[#D8D0C1] rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 text-center animate-scale-in" style={{ opacity: 0, animationDelay: '0.3s', animationFillMode: 'forwards' }}>
             <p className="text-lg sm:text-xl md:text-2xl font-semibold mb-2">With SmartCart, your platform becomes AI-shoppable</p>
             <p className="text-base sm:text-lg text-[#402A2F]/70">seamlessly blending discovery, planning, and purchase.</p>
           </div>
@@ -285,7 +296,7 @@ function App() {
       {/* How It Works */}
       <section id="how-it-works" className="py-12 sm:py-16 md:py-20 bg-[#FAF8F5]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-12 sm:mb-16">How It Works</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-12 sm:mb-16 animate-fade-in">How It Works</h2>
           <div className="grid md:grid-cols-2 gap-8 md:gap-12">
             <div className="space-y-6 sm:space-y-8">
               <div className="flex gap-3 sm:gap-4">
@@ -348,9 +359,9 @@ function App() {
       {/* Key Capabilities */}
       <section className="py-12 sm:py-16 md:py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-12 sm:mb-16">Key Capabilities</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-12 sm:mb-16 animate-fade-in">Key Capabilities</h2>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
-            <div className="bg-[#FAF8F5] rounded-xl sm:rounded-2xl p-6 sm:p-8 hover:shadow-lg transition-shadow">
+            <div className="bg-[#FAF8F5] rounded-xl sm:rounded-2xl p-6 sm:p-8 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
               <div className="w-12 h-12 sm:w-14 sm:h-14 bg-[#D8D0C1] rounded-full flex items-center justify-center mb-4 sm:mb-6">
                 <Database className="w-6 h-6 sm:w-7 sm:h-7 text-[#402A2F]" />
               </div>
@@ -399,9 +410,9 @@ function App() {
       {/* Who It's For */}
       <section id="who-its-for" className="py-12 sm:py-16 md:py-20 bg-[#FAF8F5]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-12 sm:mb-16">Who It's For</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-12 sm:mb-16 animate-fade-in">Who It's For</h2>
           <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
-            <div className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg">
+            <div className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               <div className="flex items-center gap-3 mb-3 sm:mb-4">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#E7E6E3] rounded-full flex items-center justify-center flex-shrink-0">
                   <ShoppingCart className="w-5 h-5 sm:w-6 sm:h-6 text-[#402A2F]" />
@@ -448,7 +459,7 @@ function App() {
       {/* Why It Matters */}
       <section id="impact" className="py-12 sm:py-16 md:py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-12 sm:mb-16">Why It Matters</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-12 sm:mb-16 animate-fade-in">Why It Matters</h2>
           <div className="grid md:grid-cols-2 gap-8 md:gap-12">
             <div className="grid grid-cols-2 gap-4 sm:gap-6">
               <div className="bg-[#FAF8F5] rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center">
@@ -484,7 +495,7 @@ function App() {
       {/* Get Involved / CTA */}
       <section className="py-12 sm:py-16 md:py-20 bg-[#FAF8F5]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">Get Involved</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 animate-fade-in">Get Involved</h2>
           <p className="text-base sm:text-lg md:text-xl text-[#402A2F]/80 mb-8 sm:mb-12">
             Be among the first to pilot AI-powered grocery shopping.<br className="hidden sm:block" />
             Let's connect your catalog to the Model Context Protocol and build the first Shoppable Basket via ChatGPT demo.
@@ -506,15 +517,16 @@ function App() {
       <footer className="bg-white border-t border-[#E7E6E3] py-8 sm:py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 sm:gap-6">
-            <div className="flex items-center gap-2">
+            <a href="#" onClick={(e) => { e.preventDefault(); scrollToTop(); }} className="flex items-center gap-2 cursor-pointer">
               <ChefHat className="w-5 h-5 sm:w-6 sm:h-6 text-[#402A2F]" />
               <span className="text-lg sm:text-xl font-semibold">SmartCart</span>
-            </div>
+            </a>
             <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-8 text-xs sm:text-sm text-[#402A2F]/70">
-              <a href="#solution" className="hover:text-[#402A2F] transition-colors">Solution</a>
-              <a href="#how-it-works" className="hover:text-[#402A2F] transition-colors">How it Works</a>
-              <a href="#impact" className="hover:text-[#402A2F] transition-colors">Impact</a>
-              <a href="#who-its-for" className="hover:text-[#402A2F] transition-colors">Who It's For</a>
+              <a href="#" onClick={(e) => { e.preventDefault(); scrollToTop(); }} className="hover:text-[#402A2F] transition-colors">Home</a>
+              <a href="#solution" onClick={(e) => handleNavClick(e, '#solution')} className="hover:text-[#402A2F] transition-colors">Solution</a>
+              <a href="#how-it-works" onClick={(e) => handleNavClick(e, '#how-it-works')} className="hover:text-[#402A2F] transition-colors">How it Works</a>
+              <a href="#impact" onClick={(e) => handleNavClick(e, '#impact')} className="hover:text-[#402A2F] transition-colors">Impact</a>
+              <a href="#who-its-for" onClick={(e) => handleNavClick(e, '#who-its-for')} className="hover:text-[#402A2F] transition-colors">Who It's For</a>
             </div>
             <div className="text-xs sm:text-sm text-[#402A2F]/60">
               © 2025 SmartCart. AI-powered grocery shopping.
